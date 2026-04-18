@@ -3,7 +3,6 @@
 #include <string>
 using namespace std;
 
-// ---------------- ROOM ----------------
 class Room {
 public:
     int roomNo;
@@ -17,7 +16,6 @@ public:
     }
 };
 
-// ---------------- PATIENT ----------------
 class Patient {
 public:
     int id;
@@ -44,12 +42,10 @@ public:
     }
 };
 
-// ---------------- GLOBAL ----------------
 Room rooms[5];
 Patient patients[100];
 int countP = 0;
 
-// ---------------- SAVE FILE ----------------
 void saveToFile() {
     ofstream file("patients.txt");
     for(int i = 0; i < countP; i++) {
@@ -62,7 +58,6 @@ void saveToFile() {
     file.close();
 }
 
-// ---------------- LOAD FILE ----------------
 void loadFromFile() {
     ifstream file("patients.txt");
     while(file >> patients[countP].id >> patients[countP].name 
@@ -73,7 +68,6 @@ void loadFromFile() {
     file.close();
 }
 
-// ---------------- FIND ROOM ----------------
 int assignRoom(string type) {
     for(int i = 0; i < 5; i++) {
         if(!rooms[i].occupied && rooms[i].type == type) {
@@ -84,7 +78,6 @@ int assignRoom(string type) {
     return -1;
 }
 
-// ---------------- DISCHARGE ----------------
 void dischargePatient() {
     int id;
     cout << "Enter Patient ID to discharge: ";
@@ -102,7 +95,7 @@ void dischargePatient() {
 
             cout << "\nPatient discharged!\nFinal Bill: Rs." << patients[i].bill << endl;
 
-            // remove patient
+            
             for(int k = i; k < countP - 1; k++) {
                 patients[k] = patients[k + 1];
             }
@@ -114,7 +107,6 @@ void dischargePatient() {
     cout << "Patient not found!\n";
 }
 
-// ---------------- SEARCH ----------------
 void searchPatient() {
     int id;
     cout << "Enter ID: ";
@@ -130,7 +122,7 @@ void searchPatient() {
     cout << "Not found!\n";
 }
 
-// ---------------- MAIN ----------------
+
 int main() {
 
     // rooms setup
